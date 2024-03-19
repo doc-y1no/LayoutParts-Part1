@@ -49,7 +49,14 @@
   padding: 10px;
   background: #fff;
 }
-
+.container {
+  position: relative;
+}
 .position--box {
+  position: absolute;
+  top: 50px;
+  left: 70px;
+  padding: 10px;
+  margin:10px;
   background: #a4b3e9;
 }
