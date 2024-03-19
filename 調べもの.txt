@@ -1,0 +1,87 @@
+displayの使い方：
+参考サイト：https://saruwakakun.com/html-css/basic/display
+要素の表示形式を決めるもの
+使用プロパティ4種
+・block
+  p、div、ul、h1〜h6などのタグの初期値はコレ
+・inline
+  a、span、imgなどのタグの初期値はコレ
+・inline-block
+・none
+
+「pタグはblock」「aタグはinline」というようにタグごとにdisplayプロパティの初期値が決まっている。
+それぞれの値のイメージ：
+
+・block⇒要素が横までいっぱいに広がり、縦に並んでいく
+・inline⇒要素が平ぺったく横に並んでいく
+・inline-block⇒blockとinlineの中間
+・none⇒非表示になる
+
+display: blockとは？
+  divタグやpタグ、h1~h6の見出しタグなどは、指定しなくてもはじめからblock
+block：
+要素：縦
+幅/高さ：指定可能
+padding/margin：全方向指定可能
+text-align：指定できない
+  【参考】blockの要素を中央配置
+    CSS中級者向けのお話です。blockの要素を中央に配置したいときにはmargin-right:auto; margin-left:autoという指定により横に中央配置にすることができます。
+vertical-align：指定できない
+
+display: inlineとは？
+  spanタグやaタグ、imgタグなどは指定しなくても、初期値がinline
+  inlineはおもに文中の一部として使われる。
+  基本的にはblockの中で用いられる
+inline：
+要素：横並び
+幅/高さ：指定不可
+padding/margin：左右のみ指定可能（上下のpaddingは反映こそされるが、要素とぶつかり合うので実質使用できないが正しい）
+text-align：指定できる（親要素に対して指定）
+vertical-align：指定できる
+
+inline-block：
+要素：横並び
+幅/高さ：blockと同じで指定可能
+padding/margin：blockとおなじで、全方向
+text-align：inlineと同じで指定できる（親要素に対して指定）
+vertical-align：inlineと同じで指定できる
+
+
+display:tableについて
+親要素にdisplay:tableを記入
+子要素に display: table-cell;を記入
+  text-align: center;　横並びの中央に揃える
+  vertical-align: middle;　縦方向の中央に揃える
+
+class複数の指定方法
+<div class="class1 class2">
+,や別途""で囲う必要はない""の中で半角空けて記入するだけ
+
+flex：
+flexのプロパティ：
+flex-grow
+flex-shrink
+flex-basis
+
+<style type="text/css" scoped>
+ul {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 200px;
+}　
+
+display：flex　使用プロパティ
+  justify-content: space-around; /*主軸に対し均等間隔に配置*/
+  flex-direction: column; /*垂直方向に並ぶ*/
+
+position:
+要素の位置を決めるプロパティ
+positionの値4種のみ：
+static：初期値はこれ。指定することはほとんどない
+relative：現在の位置を基準に相対的な位置を決める
+absolute：親要素を基準に絶対的な位置を決める
+fixed：画面のきまった位置に固定する　←今回はここを使いそう
