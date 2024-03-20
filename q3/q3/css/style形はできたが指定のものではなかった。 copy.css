@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+th {
+  padding: 10px;
+}
+table {
+  width: 100%;
+}
+th {
+  border: 1px solid;
+  width: 100px;
+}
+.row {
+  background: green;
+}
+.total {
+  padding-top: 10px;
+  border-top: 1px double rgb(255, 255,255);
+}
+
+.lite--green {
+  background: #d5ffc7;
+}
+div .gray {
+  background: #bcbcbc;
+}

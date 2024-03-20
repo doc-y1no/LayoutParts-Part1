@@ -91,4 +91,78 @@ positonで基準を決める
 top bottom left rightで具体的な位置を数字で調整
 
 
-q2：
+q4：
+テーブル作成　※難しい
+table-layout：
+参考サイト
+https://developer.mozilla.org/ja/docs/Web/CSS/table-layout
+auto
+fixed
+の2種類がある。
+widthの設定により記載が異なる
+
+  overflow: hidden;　長い文字を省略文字にする
+  white-space: nowrap;　わからない
+  text-overflow: ellipsis;　わからない
+
+border-collapseとは：
+値は2種類
+collapse;　セルが折り畳まれている場合 (collapse)、 border-style の値で inset が ridge のように動作し、 outset が groove のように動作。
+separate;(separate)、セル間の距離は border-spacing プロパティで定義される。
+/* キーワード値 */
+border-collapse: collapse;
+border-collapse: separate;
+
+/* グローバル値 */
+border-collapse: inherit;
+border-collapse: initial;
+border-collapse: revert;
+border-collapse: revert-layer;
+border-collapse: unset;
+
+グローバル値とは
+すべての要素で共通で使われる値
+よってキーワード値では、プロパティオリジナルの値である。
+グローバル値は値の意味がわかれば使い回せる可能性が高い
+
+table-layoutプロパティを使うことで、tableのセルや行、または列のレイアウトを調整する事ができる。
+セルの幅を自動的に均等にすることもできる便利なプロパティ。
+table-layoutでできること：
+auto	幅と中身は要素のに合うよう自動的に調整。（初期値）
+fixed	widthによって指定された値が列の幅となる。指定のない場合は均等に調整。
+
+:nth-child 使い方：
+/* リスト中の 2 番目の <li> 要素を選択 */
+li:nth-child(2) {
+  color: lime;
+}
+
+/* 兄弟要素の中で 3 つおきに要素を選択 */
+:nth-child(4n) {
+  color: lime;
+}
+:nth-child(n+7)
+7 番目とそれ以降のすべての要素を表します。 7 番目 [=0+7]、8 番目 [=1+7]、9 番目 [=2+7]、等です。
+
+:nth-child(3n+4)
+4 番目 [=(3×0)+4]、7 番目 [=(3×1)+4]、10 番目 [=(3×2)+4]、13 番目 [=(3×3)+4]、等の要素を表します。
+
+:nth-child(-n+3)
+兄弟要素のグループの中で最初の 3 つの要素を表します。 [=-0+3, -1+3, -2+3]
+
+:last-childとは：
+last-childは要素の最後のみにCSSを適用するための疑似クラス
+No	書き方	意味
+1	:first-child	最初
+2	:last-child	最後
+3	:nth-child(n)	n番目
+4	:nth-last-child(n)	後ろからn番目
+
+
+ブロック要素を可変で並べて作成する方法：
+参照：
+https://wreath-ent.co.jp/web-design/how-to-change-while-maintaining-the-ratio-of-block-elements-with-css/
+
+ポイント
+親要素と子要素で連携する場合直下に子要素を作成する必要がある。
+親要素と子要素の間に、別タグが入るとうまく連携されない。

@@ -1,1 +1,31 @@
 @charset "UTF-8";
+
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+  border: solid 1px black;
+  background: #319c4a;
+  padding: 10px;
+}
+td {
+  text-align: center;
+  border: solid 1px black;
+  padding: 10px;
+}
+td:nth-child(2n) {
+  background: #d5ffc7;
+}
+td:nth-child(2n+1) {
+  background: #bcbcbc;
+}
+.cell--table tbody tr:last-child {
+  Border-top: 1px double rgb(255, 255,255);
+}
+body .wrapper .main--area .footer--parts p {
+  margin: 50px;
+}

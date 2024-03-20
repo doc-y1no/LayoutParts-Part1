@@ -1,1 +1,40 @@
 @charset "UTF-8";
+.box--group {
+  display: table;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.footer--parts {
+  margin-top: 50px;
+}
+.box {
+  display: table-cell;
+  padding: 20px;
+}
+
+.red {
+  width: 300px;
+  background: #ff7b7b;
+}
+.blue {
+  background: #7b86ff;
+}
+.yellow {
+  width: 300px;
+  background: #fff27b;
+}
+.green {
+  background: #7bff91;
+}
+.pink {
+  width: 400px;
+  background: #ff7be2;
+}
+.orange {
+  width: 400px;
+  background: #ffc67b;
+}
+.skyblue {
+  background: #7bf2ff;
+}
