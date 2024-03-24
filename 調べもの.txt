@@ -166,3 +166,293 @@ https://wreath-ent.co.jp/web-design/how-to-change-while-maintaining-the-ratio-of
 ポイント
 親要素と子要素で連携する場合直下に子要素を作成する必要がある。
 親要素と子要素の間に、別タグが入るとうまく連携されない。
+
+
+flex-wrap使い方：
+折り返し
+
+nowrap	フレックスアイテムは折り返されず、1行で表示されます。
+wrap	フレックスアイテムは折り返され、複数行で表示されます。通常は上から下に折り返され、2行目以降のアイテムは左から右に配置されます。
+wrap-reverse	フレックスアイテムは折り返され、複数行で表示されます。ただし、wrapとは逆に、下から上に折り返されます。
+
+書き方例：
+.container{
+  width: 300px; height: auto; border: red solid 1px;
+  display: flex;
+  frex-direction: row;
+  flex-wrap: wrap;
+}
+
+justify-contentプロパティの使い方：
+フレックスアイテムの主軸方向の揃え位置を指定する
+
+値の指定方法　位置　5種類：
+flex-start	フレックスコンテナの主軸の起点に揃える。通常、左端に配置。
+flex-end	フレックスコンテナの主軸の終点に揃える。通常、右端に配置。
+center	フレックスコンテナの主軸の幅の中央に揃える。通常、左右中央に配置。
+space-between	フレックスコンテナの主軸の幅に対して余白をもって等間隔に配置。余白がないときは、flex-startと同じ。
+space-around	フレックスコンテナの主軸の幅に対して余白をもって等間隔に配置。space-betweenと異なり、起点・終点との間にも間隔が生じる。
+　　　　　　　　　余白がないときは、centerと同じ。
+
+記述例：
+.container {
+  display: flex;
+  justify-content: center;
+}
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+grid使い方：
+grid-template-columns：
+grid＝”格子状のもの”
+Grid Layoutとは格子状のマス目をベースとして、CSSでWebサイトのレイアウトを組む手法
+　・Gridを囲む親要素をコンテナ
+　・Grid内に配置した子要素をアイテムと呼ぶ
+  ※コンテナから見た孫要素はアイテムに該当しない
+FlexBoxとの違い：
+Grid LayoutとFlexboxの違い
+要素を横並びにレイアウトできることからGrid LayoutはFlexboxと似た性質を持っている。
+しかしFlexboxが1次元レイアウトであるのに対し、Grid Layoutは2次元レイアウト
+Flexboxが縦・横いずれか一方向へのレイアウトに特化しているのに対し、Grid Layoutは縦横自由なレイアウトが可能。
+ただしGrid Layoutはあらかじめレイアウトを決めて、そこに要素を割り当てていくので要素の増減に柔軟に対応しづらい面がある。
+たとえばナビゲーションメニューのように要素が増減する可能性のあるセクションには向いていない。
+要素の増減が多いセクションや、単に横並びのレイアウトを実施したいといった場合にはFlexboxを使用したほうが良い。
+
+Grid-Rayout　用語4種：
+ライン：区切る線のこと　左上起点で1から番号が割り振られている。
+トラック：コンテナの行と列
+セル：Grid-Rayoutのアイテムを配置できる最小単位
+エリア：複数のセルにまたがる任意の範囲
+※エリアの形状は四角形でなければならない。L字型やT字型のエリアは存在しない
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+ベンダープレフィックスも知っておいたほうが良い。↓解説ページ
+https://zero-plus.io/media/css-vendor-prefix/
+ベンダープレフィックスの種類：4種
+-webkit-：Chrome、Safari、ほぼ全てのiOSブラウザ
+-moz-：Firefox
+-o-：古いOpera
+-ms-：Internet Explorer、Microsoft Edge
+
+一つ一つ記述するより以下のツールなどえを活用したほうが良い。
+ベンダープレフィックス付与の方法
+
+自ら記述する
+Autoprefixer（VSCode拡張機能）を利用する
+Live sass compilerを利用する
+Gulpを利用する
+オンラインツールを使う（例：Autoprefixer CSS online）
+ベンダープレフィックスが必要なプロパティに対して一つ一つ記述するのは非常に効率が悪い。
+上記で示したようなツールを使えば、必要なプロパティに自動でベンダープレフィックスを付与することができる。
+ーーーーーーーーーーーーーーーーーーーーーーーー
+
+記述例：
+htmlに、class="container"でグループ化
+css：
+.container {
+　　display: grid; /*「Container」を「Grid Layout」に指定*/
+}
+トラックの幅や高さを指定するプロパティ　2種：
+・grid-template-columns：列トラックの幅を指定
+・grid-template-rows：行トラックの高さを指定
+
+・grid-template-columns　使い方：
+指定方向	指定内容
+px指定	pxを用いて列トラックの幅を明示的に指定する
+fr指定	コンテナの幅に応じ、列トラックを均等に分割して表示させる
+auto	fr指定の列トラックと併用で、アイテム内のコンテンツに合わせて列トラック幅が調整されて表示される。
+grid-template-columnsには複数の値を指定でき、指定する値の数に応じて列数を調整可能。
+たとえばgrid-template-columns: 150px 150px;ならば150pxの列トラックを2列、
+grid-template-columns: 150px 150px 150px;なら150pxの列トラックを3列といった具合に指定可能。
+※指定した列トラックの本数を超えるアイテムがある場合は、自動で改行され次の行に表示される。
+　上記の例ではトラックを3列に指定している為、4つ目のアイテムから改行される。
+記述例：
+.container {
+　display: grid;
+　grid-template-columns: 200px 200px 200px 200px; /*200pxの列トラックを4列表示させる*/
+}
+
+
+frはfractionの略で、分数という意味を持つ単位。
+grid-template-columnsの単位にfrを指定すると、コンテナの余白幅に対して自動的に分割して列トラックを表示。
+記述例：
+.container {
+　　display: grid;
+　　width: 600px; /*コンテナの余白幅を600pxに指定*/
+　　grid-template-columns: 1fr 1fr 1fr;
+}
+2f（フレーム）を指定した場合：
+.container {
+　　display: grid;
+　　width: 600px; /*コンテナ幅を600pxに指定*/
+　　grid-template-columns:1fr 2fr 1fr; /*2列目のトラック幅を2frに変更*/
+}
+pxとfrを指定することもできる。
+.container {
+ 　　display: grid;
+　 　width: 600px;
+　 　grid-template-columns: 300px 1fr 1fr;
+}
+→300pxのフレームが2つ横並びのあと、→の300pxの中に150pxのフレームが2つに分かれて作成される。
+
+※コンテナ幅を％指定など、ブラウザ幅に応じて変わる単位で指定してからgrid-template-columnsをfr指定すると、列トラック幅もブラウザ幅に合わせて可変する。
+レスポンシブデザインと相性が良い、grid-template-columnsプロパティにfr指定を取り入れるのがおすすめ。
+
+grid-template-columnsの値をautoに指定する
+grid-template-columnsにautoを指定した場合、基本的には1frを指定した時と同じ指定。
+frとautoを一緒に指定すると、テキストコンテンツに合わせてautoの部分が変動する。
+少しだけ、挙動が違う。
+アイテム内のコンテンツに合わせて、グリッド幅を柔軟にあわせたいならautoを使用する方が良い。
+
+grid-template-rows　使い方：
+行トラックの高さと表示させる行トラック数を指定
+指定値　3種：
+px指定	pxを用いて行トラックの高さを明示的に指定する
+fr指定	コンテナの高さに応じ、行トラックを自動で分割して表示させる
+auto	fr指定の行トラックとの併用で、アイテム内のコンテンツに合わせて高さが調整されて表示される。
+※grid-template-columnsと指定時の挙動は同じ
+
+gap　使い方：
+グリッド間の余白を指定
+記述例：
+.container {
+　　 display: grid;
+　 　height: 300px;
+　 　grid-template-columns: 200px 200px 200px;
+　 　grid-template-rows: 1fr 1fr;
+　 　gap: 10px;　←gapの使用箇所　セル間のmarginのような効果
+}
+※コンテナの外側に余白が必要な場合には、marginを使用
+縦、横にそれぞれ間隔を変える場合
+gap: 10px(横、行) 20px(縦、列);
+※grid-template-columnsまたはgrid-template-rowsにfrを指定している場合、
+　gapで指定した余白のサイズを差し引いた残りの幅が分割される。
+
+Grid Layoutでアイテムの配置を指定するプロパティ：
+2種類
+・grid-rowとgrid-columnでアイテムを配置する
+・grid-template-areasでアイテムを配置する
+
+grid-row	行方向の配置位置を指定する
+grid-column	列方向の配置位置を指定する
+　両方：配置したい位置の始点と終点のライン番号をスラッシュ区切りで指定する
+
+指定する際ライン番号の概念を使う。
+左上を起点とし、列方向は右に、行方向は下にそれぞれ向かって番号づけされている。
+
+記述例：
+.item {
+   　 grid-row: 2 / 3; /*アイテムの配置位置を「行方向：ライン番号2から3の間」に指定*/
+    　grid-column: 2 / 3; /*アイテムの配置位置を「列方向：ライン番号2から3の間」に指定*/
+}
+形を変えた場合：
+.item {
+　　　grid-row: 1 / 3; /*アイテムの配置位置を「行方向：ライン番号１から３の間」に指定*/
+　　　grid-column: 2 / 4; /*アイテムの配置位置を「列方向：ライン番号２から４の間」に指定*/
+}
+
+見本例：
+html：
+<div class="container">
+　　　<div class="item1">item1</div>
+　　　<div class="item2">item2</div>
+　　　<div class="item3">item3</div>
+　　　<div class="item4">item4</div>
+　　　<div class="item5">item5</div>
+　　　<div class="item6">item6</div>
+</div>
+
+css:
+.container {
+ 　　 display: grid;
+ 　　 width: 600px;
+ 　　 height: 300px;
+ 　　 grid-template-columns: 1fr 1fr 1fr;
+ 　　 grid-template-rows: 1fr 1fr 1fr;
+ 　　 gap: 10px 30px;
+}
+
+.item1, .item2, .item3, .item4, .item5, .item6{
+ 　　 border: 1px black solid;
+}
+
+.item1 {
+　　　grid-row: 1;
+　　　grid-column: 1/3;
+}
+.item2 {
+　　　grid-row: 1;
+　　　grid-column: 3;
+}
+.item3 {
+　　　　grid-row: 2 / 4;
+　　　　grid-column: 3;
+}
+.item4 {
+　　　　grid-row: 3;
+　　　　grid-column: 1 / 3;
+}
+.item5{
+　　　　grid-row: 2;
+　　　　grid-column: 1;
+}
+.item6{
+　　　　grid-row: 2;
+　　　　grid-column: 2;
+}
+
+
+grid-template-areasとgrid-areaでアイテムを配置　使い方：
+①まず作成したいレイアウトに、あらかじめエリア名を指定
+②作成したいレイアウトがセル数を確認する
+③grid-template-areasを使ってコンテナにエリア名を指定する
+
+記述例：
+.container {
+    display: grid;
+    width: 600px;
+    height: 300px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px 30px;
+    grid-template-areas:
+    "areaA areaA areaB"
+    "areaE areaF areaC"
+    "areaD areaD areaC"; /*「セル3×3のレイアウト」に対してエリア名を指定*/
+}
+記述ルールは「"（ダブルクォーテーション）」 で行ごとに区切る
+HTMLで記述したアイテムにgrid areaプロパティを使用して、エリア名を割り振っていく。
+
+<div class="container">
+　　　<div class="itemA">areaA</div>
+　　　<div class="itemB">areaB</div>
+　　　<div class="itemC">areaC</div>
+　　　<div class="itemD">areaD</div>
+　　　<div class="itemE">areaE</div>
+　　　<div class="itemF">areaF</div>
+</div>
+
+.itemA {
+　　　grid-area: areaA;
+}
+.itemB {
+ 　　grid-area: areaB;
+}
+.itemC {
+　 　grid-area: areaC;
+}
+.itemD {
+　 　grid-area: areaD;
+}
+.itemE {
+　 　grid-area: areaE;
+}
+.itemF {
+　　 grid-area: areaF;
+}
+
+
+grid-template-areasが反映されない場合に確認するべきポイント　2選：
+①エリア名に数字を使っていないか？
+　エリア名に数字を使用してしまうと、grid-template-areasは反映されないので注意。
+②エリアを四角以外の形状に区切っていないか？
+　エリアの形状では四角形でなければならない。たとえばL字型やT字型にエリアを指定してもgrid-template-areasは効かない。

@@ -1,16 +1,18 @@
 @charset "UTF-8";
-
+/* 5-1 */
 .item {
   width: 65px;
   padding: 10px;
-  margin: 20px 20px 0 0;
+  margin: 10px;
   color: #fff;
   background: #00bbdd;
   text-align: center;
 }
+.item2 {
+  margin: 10px;
+}
 .left--up {
   display: flex;
-  /* flex-direction: row; */
 }
 .wrapper1 {
   justify-content: flex-end;
@@ -19,16 +21,99 @@
   display: flex;
   flex-direction: row-reverse;
 }
-.item2 {
-  margin-bottom: 20px;
-}
-.wrapper2 {
-  display: flex;
-}
 .left--down {
+  display: flex;
   flex-direction: column;
 }
 .left--down--up {
   display: flex;
   flex-direction: column-reverse;
+}
+
+/* 5-2 */
+.item3 {
+  width: 65px;
+  padding: 10px;
+  margin: 20px 20px 0 0;
+  color: #fff;
+  background: #00bbdd;
+  text-align: center;
+}
+.wrapper4 {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.wrapper5 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper6 {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+/* 5-3 */
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between
+}
+.space-around {
+  display: flex;
+  justify-content: space-around
+}
+
+/* 5-4 */
+.item1 {
+color: #fff;
+background: #00bbdd;
+padding: 10px;
+}
+.grid-top {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.grid-second {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.grid-bottom {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows:200px 200px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.grid-square {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows:100px 100px 100px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.item1-1 {
+  grid-column: 1/3;
+  background: #dd0700;
+}
+.item1-3 {
+  grid-row: 2/4;
+  background: #0bdd00;
+}
+.item1-4 {
+  grid-column: 2/4;
+  background: #d9dd00;
 }
